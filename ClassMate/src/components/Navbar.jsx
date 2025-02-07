@@ -25,7 +25,7 @@ const styles = {
     justifyContent: "space-between",
     alignItems: "center",
     padding: "10px 20px",
-    background: "#ff006a",
+    background: "#eb0e6a",
     color: "white",
     boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)"
 
@@ -44,10 +44,11 @@ const styles = {
     fontWeight: "bold",
   },
   link: {
-    color: "white",
+    color: "black",
     textDecoration: "none",
     marginLeft: "15px",
-    fontSize: "18px",
+    fontSize: "15px",
+    fontFamily:"Times New Roman",
   },
 };
 

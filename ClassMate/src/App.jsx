@@ -6,6 +6,7 @@ import AjouterCours from "./pages/AjouterCours";
 import ListeCours from "./pages/ListeCours";
 import Calendrier from "./pages/Calendrier";
 
+
 // Demander la permission pour les notifications
 const demanderPermissionNotifications = () => {
   if ("Notification" in window) {
