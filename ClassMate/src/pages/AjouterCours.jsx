@@ -11,7 +11,7 @@ const AjouterCours = ({ ajouterCours }) => {
     const nouveauCours = { nomCours, date, heure, salle };
     ajouterCours(nouveauCours); // Ajoute le cours à la liste globale
 
-    // Réinitialiser le formulaire après ajout
+    // Réinitialise le formulaire après ajout
     setNomCours("");
     setDate("");
     setHeure("");

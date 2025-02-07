@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Home from  "./pages/Home";
+import Home from  "./pages/Home";   
 import AjouterCours from "./pages/AjouterCours";
 import ListeCours from "./pages/ListeCours";
 import Calendrier from "./pages/Calendrier";

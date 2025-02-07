@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 const Calendrier = ({ cours }) => {
-  const [moisActuel, setMoisActuel] = useState(new Date().getMonth()); // Mois actuel (0 = Janvier)
-  const [anneeActuelle, setAnneeActuelle] = useState(new Date().getFullYear()); // Année actuelle
+  const [moisActuel, setMoisActuel] = useState(new Date().getMonth()); // le mois actuel (0 = Janvier)
+  const [anneeActuelle, setAnneeActuelle] = useState(new Date().getFullYear()); // l'année actuelle
   const [evenementSelectionne, setEvenementSelectionne] = useState(null);
 
   const moisNoms = [
@@ -10,10 +10,10 @@ const Calendrier = ({ cours }) => {
     "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
   ];
 
-  // Obtenir le nombre de jours du mois sélectionné pour l'année choisie
-  const joursDuMois = new Date(anneeActuelle, moisActuel + 1, 0).getDate(); // Ex : Février 2024 → 29 jours
+  // Pour l'obtention du nombre de jours du mois sélectionné pour l'année choisie
+  const joursDuMois = new Date(anneeActuelle, moisActuel + 1, 0).getDate(); 
 
-  // Changer de mois
+  // pour le changement de mois
   const changerMois = (direction) => {
     let newMois = moisActuel + direction;
     let newAnnee = anneeActuelle;
@@ -29,7 +29,7 @@ const Calendrier = ({ cours }) => {
     setEvenementSelectionne(null);
   };
 
-  // Obtenir la date actuelle
+  // l'obtention de la date actuelle
   const today = new Date();
   const currentDate = today.getDate(); // Le jour actuel
   const currentMonth = today.getMonth(); // Le mois actuel

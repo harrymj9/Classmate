@@ -87,8 +87,8 @@ const ListeCours = ({ cours, supprimerCours, modifierCours }) => {
     </div>
   );
 };
+//pour la mise en forme
 
-// 🎨 STYLES EN LIGNE (inchangés)
 const styles = {
   container: {
     maxWidth: "900px",
