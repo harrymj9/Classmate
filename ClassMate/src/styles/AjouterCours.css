@@ -1,0 +1,75 @@
+/* Style général du conteneur */
+.ajouter-cours-container {
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Titre */
+  .ajouter-cours-title {
+    color: #8a6363;
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  /* Formulaire */
+  .ajouter-cours-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  /* Inputs */
+  .ajouter-cours-form input {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    outline: none;
+    width: 100%;
+    transition: 0.3s;
+  }
+  
+  .ajouter-cours-form input:focus {
+    border-color: #ae00ff;
+  }
+  
+  /* Bouton */
+  .ajouter-cours-form button {
+    background-color: #ae00ff;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .ajouter-cours-form button:hover {
+    background-color: #8a00cc;
+  }
+  
+  /* --- RESPONSIVE DESIGN --- */
+  @media (max-width: 768px) {
+    .ajouter-cours-container {
+      max-width: 90%;
+      padding: 45px;
+    }
+  
+    .ajouter-cours-form input {
+      font-size: 14px;
+      padding: 10px;
+    }
+  
+    .ajouter-cours-form button {
+      font-size: 14px;
+      padding: 10px;
+    }
+  }
+  

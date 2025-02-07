@@ -1,0 +1,62 @@
+/* Styles de la Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: #eb0e6a;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+  
+  /* Logo */
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+  .logo {
+    width: 40px;
+    height: 40px;
+  }
+  
+  /* Menu */
+  .menu {
+    display: flex;
+    gap: 15px;
+  }
+  .menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: "Times New Roman", Times, serif;
+    padding: 10px;
+  }
+  
+  /* Icône burger (caché en grand écran) */
+  .burger {
+    display: none;
+    cursor: pointer;
+  }
+  
+  /* Styles pour mobile */
+  @media (max-width: 768px) {
+    .burger {
+      display: block;
+    }
+    .menu {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      background: #412531;
+      width: 50%;
+      text-align: center;
+      padding: 50px 0;
+    }
+    .menu-ouvert {
+      display: flex;
+    }
+  }
+  

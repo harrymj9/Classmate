@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import "../styles/Calendrier.css"; // Fichier CSS à ajouter
 
 const Calendrier = ({ cours }) => {
-  const [moisActuel, setMoisActuel] = useState(new Date().getMonth()); // le mois actuel (0 = Janvier)
-  const [anneeActuelle, setAnneeActuelle] = useState(new Date().getFullYear()); // l'année actuelle
+  const [moisActuel, setMoisActuel] = useState(new Date().getMonth());
+  const [anneeActuelle, setAnneeActuelle] = useState(new Date().getFullYear());
   const [evenementSelectionne, setEvenementSelectionne] = useState(null);
 
   const moisNoms = [
@@ -10,10 +11,8 @@ const Calendrier = ({ cours }) => {
     "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
   ];
 
-  // Pour l'obtention du nombre de jours du mois sélectionné pour l'année choisie
-  const joursDuMois = new Date(anneeActuelle, moisActuel + 1, 0).getDate(); 
+  const joursDuMois = new Date(anneeActuelle, moisActuel + 1, 0).getDate();
 
-  // pour le changement de mois
   const changerMois = (direction) => {
     let newMois = moisActuel + direction;
     let newAnnee = anneeActuelle;
@@ -29,13 +28,11 @@ const Calendrier = ({ cours }) => {
     setEvenementSelectionne(null);
   };
 
-  // l'obtention de la date actuelle
   const today = new Date();
-  const currentDate = today.getDate(); // Le jour actuel
-  const currentMonth = today.getMonth(); // Le mois actuel
-  const currentYear = today.getFullYear(); // L'année actuelle
+  const currentDate = today.getDate();
+  const currentMonth = today.getMonth();
+  const currentYear = today.getFullYear();
 
-  // Afficher les événements du mois et de l'année sélectionnés
   const handleClick = (jour) => {
     const evenement = cours.find(
       (c) =>
@@ -47,15 +44,15 @@ const Calendrier = ({ cours }) => {
   };
 
   return (
-    <div style={styles.container}>
-      <h2 style={styles.title}>📅 {moisNoms[moisActuel]} {anneeActuelle}</h2>
+    <div className="calendrier-container">
+      <h2 className="calendrier-title">📅 {moisNoms[moisActuel]} {anneeActuelle}</h2>
       
-      <div style={styles.nav}>
-        <button onClick={() => changerMois(-1)}>◀Précédent</button>
+      <div className="calendrier-nav">
+        <button onClick={() => changerMois(-1)}>◀ Précédent</button>
         <button onClick={() => changerMois(1)}>Suivant ▶</button>
       </div>
 
-      <div style={styles.grid}>
+      <div className="calendrier-grid">
         {Array.from({ length: joursDuMois }, (_, i) => i + 1).map((jour) => {
           const evenement = cours.find(
             (c) =>
@@ -64,17 +61,12 @@ const Calendrier = ({ cours }) => {
               parseInt(c.date.split("-")[0]) === anneeActuelle
           );
 
-          // Vérification si c'est la date du jour
           const isToday = jour === currentDate && moisActuel === currentMonth && anneeActuelle === currentYear;
 
           return (
             <div
               key={jour}
-              style={{
-                ...styles.jour,
-                background: isToday ? "#FF6347" : (evenement ? "#4CAF50" : "#ddd"),
-                color: isToday ? "white" : (evenement ? "white" : "black"),
-              }}
+              className={`calendrier-jour ${isToday ? "today" : ""} ${evenement ? "has-event" : ""}`}
               onClick={() => handleClick(jour)}
             >
               {jour}
@@ -84,7 +76,7 @@ const Calendrier = ({ cours }) => {
       </div>
 
       {evenementSelectionne && (
-        <div style={styles.details}>
+        <div className="calendrier-details">
           <h3>Détails de l'événement</h3>
           <p><strong>Cours :</strong> {evenementSelectionne.nomCours}</p>
           {evenementSelectionne.heure && <p><strong>Heure :</strong> {evenementSelectionne.heure}</p>}
@@ -93,20 +85,6 @@ const Calendrier = ({ cours }) => {
       )}
     </div>
   );
-};
-
-const styles = {
-  container: { maxWidth: "500px", margin: "20px auto", textAlign: "center" },
-  title: { fontSize: "24px", color: "#333", marginBottom: "15px" },
-  nav: { display: "flex", justifyContent: "space-between", marginBottom: "10px" },
-  grid: { display: "grid", gridTemplateColumns: "repeat(7, 1fr)", gap: "10px", padding: "10px" },
-  jour: {
-    width: "40px", height: "40px",
-    display: "flex", alignItems: "center", justifyContent: "center",
-    fontSize: "16px", fontWeight: "bold",
-    borderRadius: "8px", cursor: "pointer", transition: "0.3s",
-  },
-  details: { marginTop: "20px", padding: "10px", background: "#eee", borderRadius: "5px", textAlign: "left" },
 };
 
 export default Calendrier;

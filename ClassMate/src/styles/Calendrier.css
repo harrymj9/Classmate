@@ -1,0 +1,102 @@
+/* Style général du calendrier */
+.calendrier-container {
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: center;
+    padding: 20px;
+    background: #f7f7f7;
+    border-radius: 8px;
+  }
+  
+  /* Titre */
+  .calendrier-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  /* Navigation */
+  .calendrier-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .calendrier-nav button {
+    background: #eb0e6a;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+  }
+  
+  .calendrier-nav button:hover {
+    background: #c40c5a;
+  }
+  
+  /* Grille du calendrier */
+  .calendrier-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    padding: 10px;
+  }
+  
+  /* Jours */
+  .calendrier-jour {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    background: #ddd;
+  }
+  
+  .calendrier-jour:hover {
+    background: #bbb;
+  }
+  
+  /* Jours spéciaux */
+  .today {
+    background: #FF6347 !important;
+    color: white;
+  }
+  
+  .has-event {
+    background: #4CAF50 !important;
+    color: white;
+  }
+  
+  /* Détails de l'événement */
+  .calendrier-details {
+    margin-top: 20px;
+    padding: 10px;
+    background: #eee;
+    border-radius: 5px;
+    text-align: left;
+  }
+  
+  /* --- RESPONSIVE DESIGN --- */
+  @media (max-width: 768px) {
+    .calendrier-container {
+      max-width: 100%;
+    }
+    
+    .calendrier-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  
+    .calendrier-jour {
+      width: 40px;
+      height: 40px;
+      font-size: 14px;
+    }
+  }
+  

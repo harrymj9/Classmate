@@ -1,55 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { FaBars, FaTimes } from "react-icons/fa";
 import logo from "../assets/logo.png";
+import "../styles/Navbar.css"; // Import du fichier CSS
 
 const Navbar = () => {
+  const [menuOuvert, setMenuOuvert] = useState(false);
+
   return (
-    <nav style={styles.navbar}>
-      <div style={styles.logoContainer}>
-        <img src={logo} alt="Logo" style={styles.logo} />
-       
+    <nav className="navbar">
+      <div className="logo-container">
+        <img src={logo} alt="Logo" className="logo" />
       </div>
-      <div>
-        <Link to="/" style={styles.link}>Accueil</Link>
-        <Link to="/ajouter" style={styles.link}>Ajouter un Cours</Link>
-        <Link to="/planning" style={styles.link}>Planning</Link>
-        <Link to="/calendrier" style={styles.link}>Calendrier 📅</Link>
+
+      {/* Icône du menu burger */}
+      <div className="burger" onClick={() => setMenuOuvert(!menuOuvert)}>
+        {menuOuvert ? <FaTimes size={30} color="white" /> : <FaBars size={30} color="white" />}
+      </div>
+
+      {/* Menu */}
+      <div className={`menu ${menuOuvert ? "menu-ouvert" : ""}`}>
+        <Link to="/" onClick={() => setMenuOuvert(false)}>Accueil</Link>
+        <Link to="/ajouter" onClick={() => setMenuOuvert(false)}>Ajouter un Cours</Link>
+        <Link to="/planning" onClick={() => setMenuOuvert(false)}>Planning</Link>
+        <Link to="/calendrier" onClick={() => setMenuOuvert(false)}>Calendrier 📅</Link>
       </div>
     </nav>
   );
-};
-
-const styles = {
-  navbar: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: "10px 20px",
-    background: "#eb0e6a",
-    color: "white",
-    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)"
-
-  },
-  logoContainer: {
-    display: "flex",
-    alignItems: "center",
-  },
-  logo: {
-    width: "40px",
-    height: "40px",
-    marginRight: "10px",
-  },
-  title: {
-    fontSize: "20px",
-    fontWeight: "bold",
-  },
-  link: {
-    color: "black",
-    textDecoration: "none",
-    marginLeft: "15px",
-    fontSize: "15px",
-    fontFamily:"Times New Roman",
-  },
 };
 
 export default Navbar;
