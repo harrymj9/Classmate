@@ -54,6 +54,21 @@
   .ajouter-cours-form button:hover {
     background-color: #8a00cc;
   }
+  .ajouter-cours-form label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333; /* Assure-toi qu'ils ne sont pas blancs */
+    margin-bottom: 5px;
+  }
+  
+  .ajouter-cours-form input {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    background-color: white; /* Empêche le fond noir */
+    color: black; /* Assure un texte bien visible */
+  }
   
   /* --- RESPONSIVE DESIGN --- */
   @media (max-width: 768px) {
