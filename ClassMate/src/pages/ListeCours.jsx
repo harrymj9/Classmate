@@ -43,8 +43,10 @@ const ListeCours = ({ cours, supprimerCours, modifierCours }) => {
           {cours.map((coursItem, index) => (
             <div key={index} style={styles.card}>
               <h3 style={styles.courseTitle}>{coursItem.nomCours}</h3>
-              <p><strong>⏰ Heure :</strong> {coursItem.heure}</p>
-              <p><strong>🏫 Salle :</strong> {coursItem.salle}</p>
+              <p style={styles.text}><span>⏰ Heure :</span> {coursItem.heure || "Non définie"}</p>
+<p style={styles.text}><span>📅 Date :</span> {coursItem.date || "Non définie"}</p>
+<p style={styles.text}><span>🏫 Salle :</span> {coursItem.salle || "Non définie"}</p>
+
               <div style={styles.buttonContainer}>
                 <button onClick={() => handleSupprimerClick(index)} style={styles.deleteButton}>🗑️ Supprimer</button>
                 <button onClick={() => handleModifierClick(index)} style={styles.editButton}>✏️ Modifier</button>
@@ -89,6 +91,7 @@ const ListeCours = ({ cours, supprimerCours, modifierCours }) => {
 };
 //pour la mise en forme
 
+
 const styles = {
   container: {
     maxWidth: "900px",
@@ -116,8 +119,27 @@ const styles = {
     borderLeft: "5px solid #007BFF",
     transition: "0.3s",
   },
-  courseTitle: { color: "#007BFF", marginBottom: "10px", fontSize: "20px" },
-  buttonContainer: { display: "flex", gap: "10px", marginTop: "10px" },
+  courseTitle: { 
+    color: "#007BFF", 
+    marginBottom: "10px", 
+    fontSize: "20px",
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+  },
+  text: {
+    fontSize: "16px",
+    color: "#333",
+    display: "flex",
+    alignItems: "center",
+    gap: "5px",
+  },
+  buttonContainer: { 
+    display: "flex", 
+    gap: "10px", 
+    marginTop: "10px",
+    flexWrap: "wrap",
+  },
   deleteButton: {
     background: "#ff4d4d",
     color: "white",
@@ -127,6 +149,7 @@ const styles = {
     cursor: "pointer",
     fontSize: "16px",
     transition: "0.3s",
+    flex: 1,
   },
   editButton: {
     background: "#007BFF",
@@ -137,6 +160,7 @@ const styles = {
     cursor: "pointer",
     fontSize: "16px",
     transition: "0.3s",
+    flex: 1,
   },
   form: {
     background: "#fff",
@@ -157,5 +181,6 @@ const styles = {
     marginTop: "10px",
   },
 };
+
 
 export default ListeCours;
