@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "../styles/Calendrier.css"; // Fichier CSS à ajouter
+import "../styles/Calendrier.css";
 
-const Calendrier = ({ cours }) => {
+const Calendrier = ({ cours = [] }) => {
   const [moisActuel, setMoisActuel] = useState(new Date().getMonth());
   const [anneeActuelle, setAnneeActuelle] = useState(new Date().getFullYear());
   const [evenementSelectionne, setEvenementSelectionne] = useState(null);
@@ -34,12 +34,12 @@ const Calendrier = ({ cours }) => {
   const currentYear = today.getFullYear();
 
   const handleClick = (jour) => {
-    const evenement = cours.find(
-      (c) =>
-        parseInt(c.date.split("-")[2]) === jour &&
-        parseInt(c.date.split("-")[1]) - 1 === moisActuel &&
-        parseInt(c.date.split("-")[0]) === anneeActuelle
-    );
+    const evenement = cours.find((c) => {
+      if (!c.date) return false;
+      const [annee, mois, jourStr] = c.date.split("-").map(Number);
+      return jourStr === jour && mois - 1 === moisActuel && annee === anneeActuelle;
+    });
+
     setEvenementSelectionne(evenement || { nomCours: "Aucun événement", heure: "", salle: "" });
   };
 
@@ -54,12 +54,11 @@ const Calendrier = ({ cours }) => {
 
       <div className="calendrier-grid">
         {Array.from({ length: joursDuMois }, (_, i) => i + 1).map((jour) => {
-          const evenement = cours.find(
-            (c) =>
-              parseInt(c.date.split("-")[2]) === jour &&
-              parseInt(c.date.split("-")[1]) - 1 === moisActuel &&
-              parseInt(c.date.split("-")[0]) === anneeActuelle
-          );
+          const evenement = cours.find((c) => {
+            if (!c.date) return false;
+            const [annee, mois, jourStr] = c.date.split("-").map(Number);
+            return jourStr === jour && mois - 1 === moisActuel && annee === anneeActuelle;
+          });
 
           const isToday = jour === currentDate && moisActuel === currentMonth && anneeActuelle === currentYear;
 
