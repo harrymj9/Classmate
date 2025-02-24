@@ -2,20 +2,29 @@ import React, { useState } from "react";
 import "../styles/Calendrier.css";
 
 const Calendrier = ({ cours = [] }) => {
+
+   //  pour suivre le mois et l'année actuellement affichés
   const [moisActuel, setMoisActuel] = useState(new Date().getMonth());
   const [anneeActuelle, setAnneeActuelle] = useState(new Date().getFullYear());
   const [evenementSelectionne, setEvenementSelectionne] = useState(null);
 
+    // ici la liste des noms des mois pour l'affichage
   const moisNoms = [
     "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
     "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
   ];
 
+
+  // pour le calcul du nombre de jours dans le mois actuel
   const joursDuMois = new Date(anneeActuelle, moisActuel + 1, 0).getDate();
 
+
+  // la fonction pour changer le mois affiché
   const changerMois = (direction) => {
     let newMois = moisActuel + direction;
     let newAnnee = anneeActuelle;
+
+     // pour le changement d'année si on passe de décembre à janvier
     if (newMois < 0) {
       newMois = 11;
       newAnnee--;
@@ -23,23 +32,31 @@ const Calendrier = ({ cours = [] }) => {
       newMois = 0;
       newAnnee++;
     }
+
+// pour la mise à jour des états 
     setMoisActuel(newMois);
     setAnneeActuelle(newAnnee);
     setEvenementSelectionne(null);
   };
 
+    // pour la récupération  de la date d'aujourd'hui
   const today = new Date();
   const currentDate = today.getDate();
   const currentMonth = today.getMonth();
   const currentYear = today.getFullYear();
 
+
+// la fonction appelée lorsqu'un jour du calendrier est cliqué
   const handleClick = (jour) => {
+
+    // Recherche d'un événement correspondant à ce jour
     const evenement = cours.find((c) => {
-      if (!c.date) return false;
+      if (!c.date) return false;   // la vérification si la date existe bien
       const [annee, mois, jourStr] = c.date.split("-").map(Number);
       return jourStr === jour && mois - 1 === moisActuel && annee === anneeActuelle;
     });
 
+    // Mise à jour de l'événement sélectionné (ou affichage d'un message par défaut)
     setEvenementSelectionne(evenement || { nomCours: "Aucun événement", heure: "", salle: "" });
   };
 

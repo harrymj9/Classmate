@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import logo from "../assets/logo.png";
-import "../styles/Navbar.css"; // Import du fichier CSS
+import "../styles/Navbar.css";
 
 const Navbar = () => {
   const [menuOuvert, setMenuOuvert] = useState(false);
@@ -13,12 +13,12 @@ const Navbar = () => {
         <img src={logo} alt="Logo" className="logo" />
       </div>
 
-      {/* Icône du menu burger */}
+      {/* l'icone pour le menu burger du responsive design */}
       <div className="burger" onClick={() => setMenuOuvert(!menuOuvert)}>
         {menuOuvert ? <FaTimes size={30} color="white" /> : <FaBars size={30} color="white" />}
       </div>
 
-      {/* Menu */}
+      {/* notre menu*/}
       <div className={`menu ${menuOuvert ? "menu-ouvert" : ""}`}>
         <Link to="/" onClick={() => setMenuOuvert(false)}>Accueil</Link>
         <Link to="/ajouter" onClick={() => setMenuOuvert(false)}>Ajouter un Cours</Link>

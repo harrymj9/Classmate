@@ -9,7 +9,7 @@ const Home = () => {
         Une application dédiée à vous aider à organiser vos cours et emplois du temps à l'école !
       </p>
 
-      {/* Section Présentation de l'école */}
+      {/* pour presenter notre école*/}
       <div style={styles.infoBox}>
         <h3 style={styles.subTitle}>Présentation de l'École Multimédia</h3>
         <p style={styles.schoolDescription}>
@@ -19,7 +19,7 @@ const Home = () => {
         <p style={styles.schoolDescription}>
           28 ans d’expérience, toujours à la pointe de l’innovation.
         </p>
-        <Link to="https://www.ecole-multimedia.com/" style={styles.schoolLink} target="_blank">
+        <Link to="https://www.ecole-multimedia.com/" style={styles.schoolLink} target="_blank"> { /* ce lien c'est pour le site officiel de l'école multimédia */}
           Découvrez notre école
         </Link>
       </div>

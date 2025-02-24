@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles/AjouterCours.css"; // Fichier CSS à ajouter
+import "../styles/AjouterCours.css";
 
 const AjouterCours = ({ ajouterCours }) => {
   const [nomCours, setNomCours] = useState("");
@@ -12,7 +12,7 @@ const AjouterCours = ({ ajouterCours }) => {
     const nouveauCours = { nomCours, date, heure, salle };
     ajouterCours(nouveauCours);
 
-    // Réinitialisation du formulaire
+    // pour la  réinitialisation de notre formulaire
     setNomCours("");
     setDate("");
     setHeure("");
