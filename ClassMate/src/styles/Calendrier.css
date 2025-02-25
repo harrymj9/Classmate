@@ -15,7 +15,7 @@
     margin-bottom: 15px;
   }
   
-  /* Navigation */
+
   .calendrier-nav {
     display: flex;
     justify-content: space-between;
@@ -36,7 +36,7 @@
     background: #c40c5a;
   }
   
-  /* Grille du calendrier */
+  
   .calendrier-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -63,7 +63,7 @@
     background: #bbb;
   }
   
-  /* Jours spéciaux */
+  
   .today {
     background: #FF6347 !important;
     color: white;
